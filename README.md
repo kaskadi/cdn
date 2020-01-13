@@ -9,6 +9,10 @@
   - kaskadi-elements
   - kaskadi-scripts
 - scripts
+- pico
+  - miniwebsite1
+  - ...
+  - miniwebsiteN
 - home
   - user1
   - ...
