@@ -1,6 +1,9 @@
 # Folder structure
 
 - imgs
+  - icons
+  - products
+  - test
 - styles
 - modules
   - lit-element
