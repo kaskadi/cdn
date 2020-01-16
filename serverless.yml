@@ -112,6 +112,23 @@ resources:
                     - Ref: 'AWS::AccountId'
                     - ":role/"
                     - !ImportValue KaskadiS3WriteRoleName
+          - Action:
+             - s3:PutObject
+            Effect: Allow
+            Resource:
+              - Fn::Join:
+                - ""
+                - - "arn:aws:s3:::"
+                  - !Ref PublicBucket
+                  - "/*"
+            Principal:
+              AWS:
+                Fn::Join:
+                  - ""
+                  - - "arn:aws:iam::"
+                    - Ref: 'AWS::AccountId'
+                    - ":user/"
+                    - "kaskadi-public-push"
     # CloudFront user access the public bucket
     CloudFrontOriginAccessIdentity:
       Type: "AWS::CloudFront::CloudFrontOriginAccessIdentity"
