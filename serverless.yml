@@ -1,5 +1,3 @@
-# Serverless config file for public distribution
-
 service:
   name: ${self:custom.globalVariables.AppName}-public-distribution
 
@@ -11,7 +9,6 @@ provider:
   region: ${opt:region, self:custom.globalVariables.Region}
 
 custom:
-  # Global variables reference
   globalVariables: ${file(./serverless-config/global.yml)}
   localVariables:
     BucketName: ${self:custom.globalVariables.AppName}-public
