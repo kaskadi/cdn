@@ -1,17 +1,12 @@
 service:
-  name: ${self:custom.globalVariables.AppName}-public-distribution
+  name: kaskadi-public-distribution
 
 provider:
   name: aws
   runtime: nodejs10.x
   stackName: ${self:service.name}-stack
-  stage: ${opt:stage, self:custom.globalVariables.Stage}
-  region: ${opt:region, self:custom.globalVariables.Region}
-
-custom:
-  globalVariables: ${file(./serverless-config/global.yml)}
-  localVariables:
-    BucketName: ${self:custom.globalVariables.AppName}-public
+  stage: ${opt:stage, 'prod'}
+  region: ${opt:region, 'eu-central-1'}
 
 resources:
   Resources:
@@ -20,7 +15,7 @@ resources:
       Type: AWS::S3::Bucket
       Properties:
         AccessControl: Private
-        BucketName: ${self:custom.localVariables.BucketName}
+        BucketName: ${env:BUCKET_NAME}
         CorsConfiguration:
           CorsRules:
             - AllowedMethods:
@@ -183,6 +178,6 @@ resources:
           DefaultRootObject: index.html
   Outputs:
     KaskadiPublicBucketName:
-      Value: ${self:custom.localVariables.BucketName}
+      Value: ${self:resources.Resources.PublicBucket.Properties.BucketName}
       Export:
         Name: KaskadiPublicBucketName

@@ -1,5 +1,0 @@
-# This file contains all shared data between frontend and backend
-AppName: kaskadi
-AppVersion: 1.0.0
-Region: eu-central-1
-Stage: prod
