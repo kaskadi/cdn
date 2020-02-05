@@ -183,5 +183,3 @@ resources:
       Value: ${self:resources.Resources.PublicBucket.Properties.BucketName}
       Export:
         Name: KaskadiPublicBucketName
-
-# push
